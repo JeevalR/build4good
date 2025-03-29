@@ -12,10 +12,14 @@ bg = pg.transform.scale(pg.image.load("bg.png"), (960,750))
 mayo = Player("assets/mayo.png",screen)
 inventory = pg.image.load("assets/inventory.png")
 fp = pg.image.load("assets/fp.png")
+cbm = pg.transform.scale(pg.image.load("assets/cbm.png"),(550,50))
+wash = pg.image.load("assets/wash.png")
 
 
 running = True
 fpb = False
+cbmb = False
+washb = False
 
 while running == True:
    screen.blit(bg, (0,0))
@@ -25,6 +29,8 @@ while running == True:
 
    for event in pg.event.get():
       fpb = False
+      cbmb = False
+      washb = False
 
       #make click for error handling
       if pg.mouse.get_pressed()[0] == True:
@@ -34,13 +40,12 @@ while running == True:
          mayo.move(event)
       if mayo.x in range(0,180) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
         fpb = True
-         
          #PUT FRIDGE/PANTRY STUFF HERE!
       if mayo.x in range(320,360) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
-         pass
+         cbmb = True
          #PUT COUNTER STUFF (CHOPPING, ETC.) HERE!
       if mayo.x in range(448,515) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
-         pass
+         washb = True
          #PUT SINK STUFF HERE!
       if mayo.x in range(608,740) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
          pass
@@ -51,5 +56,10 @@ while running == True:
    
    if fpb == True:
       screen.blit(fp, (0,150))
+   if cbmb == True:
+      screen.blit(cbm, (150,160))
+   if washb == True:
+      screen.blit(wash,(480,150))
+   
 
    display.update()
