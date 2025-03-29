@@ -12,6 +12,8 @@ bg = pg.transform.scale(pg.image.load("bg.png"), (960,750))
 
 mayo = Player("assets/mayo.png",screen)
 
+inventory = pg.image.load("assets/inventory.png")
+
 
 running = True
 
@@ -19,6 +21,7 @@ while running == True:
   screen.blit(bg, (0,0))
   mayo.draw()
   x,y = pg.mouse.get_pos()
+  screen.blit(inventory,(0,640))
 
   for event in pg.event.get():
 
@@ -44,5 +47,5 @@ while running == True:
 
    if event.type == pg.QUIT:  # for quitting
       running = False
-    
+
   display.update()
