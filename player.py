@@ -22,6 +22,18 @@ class Player():
         self.screen = screen
         self.velocity = 32
     def can_move(self):
+        if self.y < 250:
+            self.y = 251
+            return False
+        if self.y > 556:
+            self.y = 555
+            return False
+        if self.x < 0:
+            self.x = 0
+            return False
+        if self.x > 790:
+            self.x = 789
+            return False
         return True
     
     def draw(self):
