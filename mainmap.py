@@ -14,12 +14,14 @@ inventory = pg.image.load("assets/inventory.png")
 fp = pg.image.load("assets/fp.png")
 cbm = pg.transform.scale(pg.image.load("assets/cbm.png"),(550,50))
 wash = pg.image.load("assets/wash.png")
+pop = pg.image.load("assets/pop.png")
 
 
 running = True
 fpb = False
 cbmb = False
 washb = False
+popb = False
 
 while running == True:
    screen.blit(bg, (0,0))
@@ -31,6 +33,7 @@ while running == True:
       fpb = False
       cbmb = False
       washb = False
+      popb = False
 
       #make click for error handling
       if pg.mouse.get_pressed()[0] == True:
@@ -48,7 +51,7 @@ while running == True:
          washb = True
          #PUT SINK STUFF HERE!
       if mayo.x in range(608,740) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
-         pass
+         popb = True
          #PUT STOVE/OVEN STUFF HERE!
 
       if event.type == pg.QUIT:  # for quitting
@@ -60,6 +63,8 @@ while running == True:
       screen.blit(cbm, (150,160))
    if washb == True:
       screen.blit(wash,(480,150))
+   if popb == True:
+      screen.blit(pop,(670,150))
    
 
    display.update()
