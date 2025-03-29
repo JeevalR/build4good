@@ -21,20 +21,6 @@ class Player():
         self.y = 375
         self.screen = screen
         self.velocity = 32
-    def can_move(self):
-        if self.y < 250:
-            self.y = 251
-            return False
-        if self.y > 556:
-            self.y = 555
-            return False
-        if self.x < 0:
-            self.x = 0
-            return False
-        if self.x > 790:
-            self.x = 789
-            return False
-        return True
     
     def draw(self):
          self.screen.blit(self.frames[self.frametxt],(self.x,self.y))
@@ -42,7 +28,7 @@ class Player():
     def move(self,event):
         #left
         if event.key == pg.K_LEFT:
-            if self.can_move():
+            if self.x >= 0:
                 self.x -= self.velocity 
             self.frame = self.frames["frame_left"]
             self.frametxt = "frame_left"
@@ -50,21 +36,22 @@ class Player():
 
         #right
         if event.key == pg.K_RIGHT: 
-            if self.can_move():
+            if self.x <= 770:
                 self.x += self.velocity 
             self.frame = self.frames["frame_right"]
             self.frametxt = "frame_right"
 
         #up
         if event.key == pg.K_UP: 
-            if self.can_move():
+            if self.y >= 250:
                 self.y -= self.velocity 
             self.frame = self.frames["frame_back"]
             self.frametxt = "frame_back"
+            print(self.x)
 
         #down
         if event.key == pg.K_DOWN: 
-            if self.can_move():
+            if self.y <= 540:
                 self.y += self.velocity 
             self.frame = self.frames["frame_front"]
             self.frametxt = "frame_front"
