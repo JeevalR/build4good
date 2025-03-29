@@ -28,7 +28,6 @@ while running == True:
    #make click for error handling
    if pg.mouse.get_pressed()[0] == True:
       print(x,y)
-      print(mayo.x, mayo.y)
 
    if event.type == pg.KEYDOWN:
       mayo.move(event)
