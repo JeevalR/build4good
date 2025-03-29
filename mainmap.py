@@ -1,12 +1,31 @@
 import pygame as pg
+from player import Player
 
-SCREEN_WIDTH = 30 * 32
-SCREEN_HEIGHT = 25 * 32
+pg.init()
+display = pg.display
+
+SCREEN_WIDTH = 960
+SCREEN_HEIGHT = 750
 screen = pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
-bg = pg.image.load("bg.png")
+bg = pg.transform.scale(pg.image.load("bg.png"), (960,750))
 
-run = True
+mayo = Player("assets/mayo.png",screen)
 
-while (run):
-    screen.blit(bg, (0,0))
+
+running = True
+
+while running == True:
+  screen.blit(bg, (0,0))
+  mayo.draw()
+  for event in pg.event.get():
+
+    if event.type == pg.KEYDOWN:
+      mayo.move(event)
+
+    #make click
+
+    if event.type == pg.QUIT:  # for quitting
+        running = False
+    
+  display.update()
