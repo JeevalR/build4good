@@ -28,10 +28,14 @@ while running == True:
       #make click for error handling
       if pg.mouse.get_pressed()[0] == True:
          print(x,y)
+      
       if event.type == pg.KEYDOWN:
          mayo.move(event)
       if mayo.x in range(0,180) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
-         screen.blit(fp, (0,150))
+        fpb = True
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_DOWN:
+               fpb = False
          
          #PUT FRIDGE/PANTRY STUFF HERE!
       if mayo.x in range(320,360) and mayo.y >= 245 and mayo.frametxt == 'frame_back':
